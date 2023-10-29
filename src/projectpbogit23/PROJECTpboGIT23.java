@@ -15,34 +15,45 @@ public class PROJECTpboGIT23 {
      */
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-
-        System.out.print("Masukkan jumlah nilai: ");
-        int jumlahNilai = input.nextInt();
-
-        if (jumlahNilai <= 0) {
-            System.out.println("Tidak ada nilai yang dimasukkan.");
-            return;
+        System.out.println("====Program Nilai Terbesar dan Terkecil Nilai Mahasiswa====");
+        
+        System.out.print("Masukan Nama Petugas: ");
+        String namapetugas = input.nextLine();
+        
+        System.out.print("Masukkan Banyaknya nilai Mahasiswa: ");
+        int banyakMahasiswa = input.nextInt();
+        
+        int[] nilaiMahasiswa = new int[banyakMahasiswa];
+       
+        // Meminta nilai-nilai mahasiswa
+        for (int i = 0; i < banyakMahasiswa; i++) {
+            System.out.print("Masukkan nilai mahasiswa ke-" + (i + 1) + ": ");
+            nilaiMahasiswa[i] = input.nextInt();
         }
 
-        int minValue = Integer.MAX_VALUE;
-        int maxValue = Integer.MIN_VALUE;
 
-        for (int i = 1; i <= jumlahNilai; i++) {
-            System.out.print("Masukkan nilai ke-" + i + ": ");
-            int nilai = input.nextInt();
+         // Mencari nilai terbesar dan terkecil
+        int nilaiTerbesar = nilaiMahasiswa[0];
+        int nilaiTerkecil = nilaiMahasiswa[0];
 
-            if (nilai < minValue) {
-                minValue = nilai;
+        for (int i = 1; i < banyakMahasiswa; i++) {
+            if (nilaiMahasiswa[i] > nilaiTerbesar) {
+                nilaiTerbesar = nilaiMahasiswa[i];
             }
-
-            if (nilai > maxValue) {
-                maxValue = nilai;
+            if (nilaiMahasiswa[i] < nilaiTerkecil) {
+                nilaiTerkecil = nilaiMahasiswa[i];
             }
         }
+        // Menampilkan hasil
+        System.out.println("====Hasil Nilai Mahasiswa====");
+        for (int i = 0; i < banyakMahasiswa; i++) {
+            System.out.println("Nilai Mahasiswa ke-" + (i + 1) + ": " + nilaiMahasiswa[i]);
+        }
+        
+        System.out.println("Nilai terkecil: " + nilaiTerbesar);
+        System.out.println("Nilai terbesar: " + nilaiTerkecil);
 
-        System.out.println("Nilai terkecil: " + minValue);
-        System.out.println("Nilai terbesar: " + maxValue);
-
+        System.out.println("Petugas: "+ namapetugas);
         input.close();
     }
     
